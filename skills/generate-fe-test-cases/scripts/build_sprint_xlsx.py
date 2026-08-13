@@ -53,6 +53,7 @@ TEMPLATE_REL = Path("Templates/test_case_template.xlsx")
 OUT_DIR_REL = Path("Drafts/test-cases")
 READONLY_REL = Path("test-cases")
 LOCKED_COLUMNS = {"status", "bug_links"}
+TESTING_PHASES = {"Feature", "Regression"}
 INVALID_SHEET_CHARS = re.compile(r"[\\/*?:\[\]]")
 
 
@@ -122,6 +123,10 @@ def validate_cases(cases: list[dict], headers: list[str], ticket: str) -> list[d
             die(f"case {i} has no summary.")
         if not str(case.get("ground_truth", "")).strip():
             die(f"case {i} has no ground_truth; every case needs a source ref.")
+        phase = str(case.get("testing_phase", "")).strip()
+        if phase and phase not in TESTING_PHASES:
+            die(f"case {i} testing_phase is '{phase}'; use exactly one of "
+                f"{sorted(TESTING_PHASES)} — never a combined value.")
         case = dict(case)
         case.setdefault("story_linkages", ticket)
         cleaned.append(case)

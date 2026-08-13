@@ -47,7 +47,7 @@ Tag every case by scope and granularity, not by old-vs-new.
 - Write at least one Regression case per end-to-end flow (from the Step 3
   decomposition) that the change participates in. None for a flow it cannot reach.
 
-**Feature, Regression** — one case that is both: the ticket's change sits on a flow
-boundary, so the same e2e walk is both the primary proof of the change and the
-flow's regression guard. When in doubt, keep them as separate Feature and
-Regression cases.
+**Exactly one phase per case — never both.** A case that could serve both roles is
+split into a Feature case (isolates the one behavior) and a Regression case (walks
+the flow). Never tag one case as both. Tag by what the case actually does: a single
+atomic assertion → `Feature`; an end-to-end walk → `Regression`.
