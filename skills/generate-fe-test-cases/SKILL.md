@@ -1,5 +1,5 @@
 ---
-name: frontend-test-case-generator
+name: generate-fe-test-cases
 description: >-
   Generate frontend QA test cases grounded strictly in source material. Use when
   the user wants to create, draft, or derive frontend test cases from a PRD, Jira

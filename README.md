@@ -8,7 +8,7 @@ friends).
 
 | Skill | What it does |
 | ----- | ------------ |
-| `frontend-test-case-generator` | Generate frontend QA test cases grounded strictly in source material — PRD + Jira + Figma. Scans related PRDs and the existing test-case corpus, decomposes the change into flows, locks scope, applies a coverage floor, and requires a Ground Truth per case. Outputs one `.xlsx` per sprint (one tab per Jira ticket) via a build script that never destroys sibling tabs. |
+| `generate-fe-test-cases` | Generate frontend QA test cases grounded strictly in source material — PRD + Jira + Figma. Scans related PRDs and the existing test-case corpus, decomposes the change into flows, locks scope, applies a coverage floor, and requires a Ground Truth per case. Outputs one `.xlsx` per sprint (one tab per Jira ticket) via a build script that never destroys sibling tabs. |
 
 ## Install
 
@@ -40,7 +40,7 @@ must not be improvised.
 
 ## Notes
 
-`frontend-test-case-generator` currently carries bindings to a specific Obsidian
+`generate-fe-test-cases` currently carries bindings to a specific Obsidian
 vault (vault paths, product→subject table, a titis-tcms sync target). To reuse it
 elsewhere, adjust those bindings — the method (Ground Truth discipline, corpus and
 neighbour scans, coverage floor, consolidation) is project-independent.
