@@ -114,7 +114,9 @@ Priority/Automation rubrics, Gherkin rules, subject table) and
 
 ## Step 5 — Consolidate (redundancy pass before finalizing)
 
-- **Merge** cases sharing the same condition.
+- **Merge** cases sharing the same condition — but only within the same Testing
+  Phase. A Feature case and a Regression case that overlap are both kept; that
+  redundancy is intended (`coverage.md` Testing Phase).
 - **Save subsumes view** — keep the save/submit case, drop view-only, fold the view
   assertion in as an intermediate step.
 - **Stronger subsumes weaker** — for same subject + logic type, keep the superset
@@ -131,9 +133,10 @@ Print this list with a Y/N per line:
 1. Every AC in the ticket maps to ≥1 case — list `AC → case Summary`.
 2. Every coverage-floor class is covered, or explicitly marked not reachable.
 3. Every case belongs to a flow from the Step 3 plan; no case falls outside the locked scope.
-4. No two Summaries describe the same condition after consolidation.
-5. No Summary duplicates an existing TC found in step 2b, or the difference is stated.
-6. Every Subject appears in the product's subject list.
+4. Every Feature case tests exactly one behavior; every end-to-end flow the change reaches has ≥1 Regression case (`coverage.md` Testing Phase).
+5. No two Summaries describe the same condition after consolidation (Feature/Regression overlap is expected and allowed).
+6. No Summary duplicates an existing TC found in step 2b, or the difference is stated.
+7. Every Subject appears in the product's subject list.
 
 Any `N` blocks the write. Fix it or ask.
 

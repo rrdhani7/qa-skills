@@ -25,7 +25,7 @@ If the product is not listed or not specified, stop and ask.
 | **Test Data** | Input values per step. |
 | **Expected Result** | UI assertions: element state · URL/route · visual feedback. |
 | **Story Linkages** | Jira ticket ID. |
-| **Testing Phase** | `Feature` · `Regression` · `Feature, Regression` |
+| **Testing Phase** | `Feature` · `Regression` · `Feature, Regression` — pick with the Testing Phase rules in `coverage.md`. |
 | **Automation Status** | `PLAN` · `CAN'T AUTOMATE` — rubric below. |
 | **Ground Truth** | Verbatim quote / design observation + source ref (`PRD §4.3`, `Jira PROJ-123 AC#2`, `Design — …`, `TC-720`). |
 | **Status** | Leave empty — titis-tcms owns it after import. |

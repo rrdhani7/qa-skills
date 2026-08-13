@@ -21,9 +21,33 @@ class does not exist.
 | Accessibility | Keyboard-only path, visible focus, and a screen-reader label on any control the change adds or alters. |
 | Authorization | A subject without rights is blocked from the action or route — assert the UI blocks it, not just the server. |
 
-## Regression scope
+## Testing Phase — Feature vs Regression
 
-Add a `Regression` case only when the change touches the **same code path or shared
-control** — including the neighbours found in the Step 2 scans. Do not regress
-unrelated behavior just because it shares a screen or a product hub. When unsure,
-exclude and ask.
+Tag every case by scope and granularity, not by old-vs-new.
+
+**Feature** — one behavior, scoped strictly to the PRD change.
+
+- Tests the smallest verifiable detail of a single AC (e.g. "the ScreenOut label is
+  red"). One behavior per case — this is where the Gherkin one-behavior rule applies.
+- Scope = only what this PRD changed. Nothing outside it.
+- Every AC and every coverage-floor class above produces Feature cases.
+
+**Regression** — one end-to-end flow, bundling many behaviors.
+
+- Walks a whole journey start to finish (e.g. run a survey: build → answer →
+  screen-out → submit → notification), asserting many behaviors in one case —
+  including ones already covered atomically by Feature cases.
+- Scope may reach outside this PRD into related behavior in neighbour PRDs (the
+  Step 2 scan) when the flow passes through them.
+- The overlap with Feature cases is deliberate. A regression run cannot execute
+  every Feature case, so a few broad e2e Regression cases stand in for that
+  coverage. Redundancy here is the point, not a defect.
+- A Regression case asserts several behaviors in one scenario — the "one behavior
+  per scenario" rule is relaxed for it; the journey is the unit.
+- Write at least one Regression case per end-to-end flow (from the Step 3
+  decomposition) that the change participates in. None for a flow it cannot reach.
+
+**Feature, Regression** — one case that is both: the ticket's change sits on a flow
+boundary, so the same e2e walk is both the primary proof of the change and the
+flow's regression guard. When in doubt, keep them as separate Feature and
+Regression cases.
